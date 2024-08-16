@@ -1,0 +1,88 @@
+services:
+  client-service:
+    build:
+      context: ./Client
+      dockerfile: Dockerfile
+    restart: always
+    container_name: client-service
+    volumes:
+      - ./Client:/usr/production/client
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+  backend-service:
+    build:
+      context: ./BackEnd
+      dockerfile: Dockerfile
+    restart: always
+    container_name: backend-service
+    volumes:
+      - ./BackEnd:/usr/production/backend
+      - ./BackEnd/Logs:/usr/production/backend/Logs
+    ports:
+      - "5123:5123" 
+    networks:
+      - app-network
+
+  strapi-service:    
+    build: 
+      context: ./Strapi
+      dockerfile: Dockerfile
+    restart: always
+    container_name: strapi-service
+    env_file:
+      - ./Strapi/.env
+    volumes:
+      - ./Strapi:/usr/production/strapi
+    ports:
+      - "1337:1337" 
+    networks:
+      - app-network
+
+  mysql-service:
+    image: mysql:8
+    restart: always
+    container_name: mySQL-service
+    environment:
+      MYSQL_DATABASE: 'PortfolioDB'
+      MYSQL_USER: 'admin_PortfolioDB'
+      MYSQL_PASSWORD: '******'
+      MYSQL_ROOT_PASSWORD: '******'      
+    volumes:
+      - ./MySQL/mysql-data:/var/lib/mysql  
+      - ./MySQL/initdb:/docker-entrypoint-initdb.d  
+    ports:
+      - "3308:3308"
+    networks:
+      - app-network  
+
+
+  nginx-service:
+    build:
+      context: ./Proxies 
+      dockerfile: Dockerfile
+    restart: always
+    container_name: nginx-service
+    volumes:
+      - ./Proxies/nginx.conf:/etc/nginx/nginx.conf      
+      - ./Proxies/logs:/var/log/nginx 
+    ports:
+      - "80:80"          
+    depends_on:
+      - client-service     
+      - backend-service 
+      - mysql-service
+      - strapi-service
+    stdin_open: true  
+    tty: true         
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql_data:

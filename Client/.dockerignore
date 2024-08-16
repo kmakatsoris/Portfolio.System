@@ -1,0 +1,32 @@
+# Exclude node_modules directory
+**/node_modules
+
+# Exclude build artifacts
+**/build
+**/dist
+**/*.log
+**/*.tmp
+
+# Exclude development dependencies
+**/*.test.js
+**/*.spec.js
+**/*.test.ts
+**/*.spec.ts
+**/*.stories.js
+**/*.stories.ts
+
+# Exclude source control files
+**/.git
+**/.gitignore
+
+# Exclude editor/IDE files
+**/.vscode
+**/.idea
+**/*.suo
+**/*.ntvs*
+**/*.njsproj
+**/*.sln
+**/*.sw*
+
+# Exclude Docker-related files
+**/.dockerignore

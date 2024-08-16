@@ -1,0 +1,23 @@
+# Ignore entire directories
+/Client/*
+/Proxies/*
+/BackEnd/*
+/Strapi/*
+/MySQL/*
+/Workers/*
+
+# But Include,
+!Strapi/Dockerfile
+!Strapi/.dockerignore
+
+!Client/Dockerfile
+!Client/.dockerignore
+
+!BackEnd/Dockerfile
+!BackEnd/.dockerignore
+
+!Proxies/Dockerfile
+!Proxies/.dockerignore
+!Proxies/nginx.conf
+
+!Workers/*.sh

@@ -1,0 +1,30 @@
+# Exclude development files and directories
+**/node_modules
+**/npm-debug.log
+**/yarn-debug.log
+**/yarn-error.log
+
+# Exclude build artifacts
+**/dist
+**/build
+
+# Exclude version control files
+**/.git
+**/.gitignore
+
+# Exclude editor/IDE files
+**/.vscode
+**/.idea
+**/*.suo
+**/*.ntvs*
+**/*.njsproj
+**/*.sln
+**/*.sw*
+
+# Exclude temporary files
+**/*.log
+**/*.tmp
+**/*.bak
+
+# Exclude Docker-related files
+**/.dockerignore
