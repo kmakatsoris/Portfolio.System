@@ -1,4 +1,4 @@
-# 📦 Project Name
+# 📦 Portfolio.System
 
 ![License](https://github.com/kmakatsoris/Portfolio.System)
 ![Issues](https://github.com/kmakatsoris/Portfolio.System)
@@ -27,9 +27,9 @@
 This web application is the Digital Portfolio's System Application of MAKATSORIS KONSTANTINOS. 
 
 ### 🎯 Features
-- Demonstration of Knowledge
-- Part of My Style Choices
-- Foundation for Skillset Communication
+- Demonstration part of my Knowledge.
+- Part of My Style Choices.
+- Foundation for Skillset Communication.
 
 ## 🛠 Tech Stack
 
